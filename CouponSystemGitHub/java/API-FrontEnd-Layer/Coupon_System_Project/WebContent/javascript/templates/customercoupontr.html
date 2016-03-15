@@ -1,0 +1,17 @@
+<!-- a single coupon in the customer's shopping cart table -->
+
+<td><input type="checkbox" name="couponRow"
+	ng-click="checkboxChange($event,coupon.id)" /></td>
+<td>{{ coupon.title }}</td>
+<td>{{ type }}</td>
+<td>{{ coupon.price | currency}}</td>
+<td>{{ startDate }}</td>
+<td>{{ endDate }}</td>
+<td><button class="btn" ng-click="removeSingleCoupon(coupon.id)">
+		<span class="glyphicon glyphicon-remove-sign"></span>&nbsp;Remove
+	</button></td>
+<td>
+<div id="success{{coupon.id}}" class="hideMe"><span class="glyphicon glyphicon-ok alert alert-success"></span></div>
+<div id="fail{{coupon.id}}" class="hideMe"><span class="glyphicon glyphicon-remove alert alert-warning" ></span></div>
+</td>
+	

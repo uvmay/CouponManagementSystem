@@ -1,0 +1,108 @@
+<!-- main page section -->
+<div id="mainPageSection" class="panel panel-default panel-body page">
+<!-- navigation menu -->
+	<div id="menu" class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a>Companies</a></li>
+			<li><a ng-click="moveToCustomers()">Customers</a></li>
+		</ul>
+	</div>
+<!-- /navigation menu -->
+
+	<h2 class="text-left">Companies</h2>
+
+	<div class="container">
+<!-- main actions -->
+		<div id="mainActions">
+		<!-- more actions drop down menu -->
+			<div id="actions" class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+					Actions <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a ng-click="deleteAllChecked()">Delete</a></li>
+					<li><a ng-click="showCreate()">New Company</a></li>
+				</ul>
+			</div>
+		<!-- /more actions drop down menu -->
+		
+			<div style="width: 44%; height: 5px; float: left;"></div>
+		<!-- search related actions -->
+			<div class="rightActions"">
+				<button id="searchBtnAdmin" type="button" class="btn btn-default" ng-click="search.funct()">
+					<span class="glyphicon glyphicon-search"></span> Search
+				</button>
+				<select id="searchSelect" class="appSelect" ng-model="search.selector">
+					<option selected>Id</option>
+					<option>Name</option>
+				</select> <input type="text" id="searchText" class="appInput" placeholder="search" ng-model="search.value"></input>
+			</div>
+		<!-- /search related actions -->
+		</div>
+<!-- /main actions -->
+
+<!-- main companies table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="tableHeader"></th>
+					<th class="tableHeader">Id</th>
+					<th class="tableHeader">Name</th>
+					<th class="tableHeader">Password</th>
+					<th class="tableHeader">Email</th>
+					<th class="tableHeader">Edit</th>
+					<th class="tableHeader">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in companies" data="x" checked-boxes="checkedBoxes"
+					get-all-companies="getAllCompanies" company-tr>
+				</tr>
+			</tbody>
+		</table>
+<!-- /main companies table -->
+        <!-- loader -->
+		<div class="progress" id="loader">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="100" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%"></div>
+		</div>
+		<!-- /loader -->
+	</div>
+</div>
+<!-- /main page section -->
+
+<!-- new company panel -->
+<!-- an Angular Form that validates every field when creating the new company -->
+<div id="newCompany" class="panel panel-default panel-body page" ng-model="newCompanyBar" ng-hide="showHide" ng-form="newCompanyForm">
+	<h2 class="text-left">New Company</h2>
+	<!-- new name -->
+	<div class="floatleft">
+		<input type="text" id="newName" class="appInput newCompInput"
+			ng-model="newCompany.username" name="username" placeholder="New Name"
+			minlength="3" maxlength="24" required></input>
+		<div class="instText" ng-show="!newCompanyForm.username.$error.minlength">*must include between 3-24 characters</div>
+		<div class="alertSpan" ng-show="newCompanyForm.username.$error.minlength">Company Name Too Short</div>
+	</div>
+	<!-- /new name -->
+	
+	<!-- new password -->
+	<div class="floatleft">
+		<input type="text" id="newPassword" class="appInput newCompInput"
+			ng-model="newCompany.password" name="password"
+			placeholder="New Password" minlength="8" maxlength="12" required></input>
+		<div class="instText" ng-show="!newCompanyForm.password.$error.minlength">*must include 8-12 characters</div>
+		<div class="alertSpan" ng-show="newCompanyForm.password.$error.minlength">Password Too Short</div>
+	</div>
+	<!-- /new password -->
+	
+	<!-- new email -->
+	<input type="email" id="newEmail" class="appInput newCompInput"
+		ng-model="newCompany.email" placeholder="New Email" name="email"
+		ng-pattern="emailRegExp" required></input>
+	<!-- /new new email -->
+	
+	<input type="button" class="button newCompBtn floatleft" ng-click="createCompany()"
+		ng-disabled="newCompanyForm.$invalid" value="Create"/>
+</div>
+<!-- /new company panel -->

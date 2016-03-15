@@ -1,0 +1,21 @@
+ <div id="leftspace"></div>
+ <div id="login">Sign Up</div><br/><br/>
+ <!-- signup form -->
+ <!-- a signup form for customers which validates the fields -->
+ <div id="boxes" ng-form="form">
+ <div id="username"><div class="outterbox"><input type="text" class="appInput" name="username" ng-model="username" minlength="5" maxlength="24" placeholder="User Name" required/>
+</div>
+  <span class="alertSpan" ng-show="form.username.$error.minlength">User Name Too Short</span>
+  <div class="instText">*must include between 5-24 characters</div>
+  </div>
+ <div id="password"><div class="outterbox"><input type="password" class="appInput" name="password" ng-model="password" minlength="8" maxlength="12" placeholder="Password" required/> 
+ </div>
+ <span class="alertSpan" ng-show="form.password.$error.minlength">Password Too Short</span>
+ </div>
+ <div class="instText">*must include 8-12 characters</div>
+ 
+ <div id="buttons">
+ <input type="button" style="margin-left:26%;" id="doneSignup" class ="button" ng-click="signup()" ng-disabled="form.$invalid"  value="Done"/>
+ </div>
+</div>
+<!-- /signup form -->

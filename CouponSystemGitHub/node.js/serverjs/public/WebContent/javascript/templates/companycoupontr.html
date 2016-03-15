@@ -1,0 +1,16 @@
+<!-- a single row in the company's coupons table  -->
+
+<td><input type="checkbox" name="companyRow" ng-click="checkboxChange($event,x.id)" /></td>
+<td>{{ x.id }}</td>
+<td>{{x.title}}</td>
+<td>{{x.type}}</td>
+<td>{{x.amount}}</td>
+<td><button class="btn" ng-model="editBtn" ng-click="editCouponFunc($event)">
+		<span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit
+	</button></td>
+<td><button class="btn" ng-click="deleteCoupon(x.id)">
+		<span class="glyphicon glyphicon-remove-sign"></span>&nbsp;Delete
+	</button></td>
+<td><button class="btn" ng-click="moreInfo()">
+		<span class="glyphicon glyphicon-chevron-down"></span>&nbsp;More
+	</button></td>

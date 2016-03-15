@@ -1,0 +1,38 @@
+#menu{
+	width:100%;
+	z-index:-1000;
+}
+
+#logoutBtn{
+	color:gray;
+	padding:3px;
+	position:absolute;
+	top:0px;
+	right:0px;
+	border-bottom:solid;
+	border-right:solid;
+	border-left:solid;
+	border-radius:5px;
+	border-color:#46AB4E;
+	z-index:2000;
+}
+
+#logoutBtn:hover{
+	border-color:#5BDE65;
+	background-color:#6EFF7A;
+}
+
+.page{
+	margin-top:-80px;
+	height:100%;
+	width:98%;
+	margin-left:1%;
+}
+
+.page2{
+	margin-top:0px;
+}
+
+.hideMe{
+	display:none;
+}

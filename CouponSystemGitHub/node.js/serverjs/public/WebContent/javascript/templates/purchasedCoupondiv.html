@@ -1,0 +1,15 @@
+<!-- a single coupon in the customer's purchased coupons page -->
+
+<div class="outterBox">
+  <div class="boxContent">
+  <!-- coupon image -->
+ <img class ="storeImage" src="{{coupon.image}}"/><br/> 
+  <!-- coupon title -->
+  <span><b>{{coupon.title}}</b></span> 
+  <button class="btn floatleft storeCouponBtn" ng-click="moreInfo()" title="More Information">
+		<span class="glyphicon glyphicon-chevron-down storeCouponBtnIcon"></span>
+	</button><br/> <br/>
+	<!-- coupon price -->
+   <span>{{coupon.price | currency}}</span> 
+  </div>
+</div>

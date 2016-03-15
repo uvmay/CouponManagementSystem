@@ -1,0 +1,19 @@
+<!-- a single coupon in the customer's coupons store -->
+
+<div class="outterBox">
+  <div class="boxContent">
+  <!-- coupon image -->
+ <img class ="storeImage" src="{{AmountCheck()}}"/><br/> 
+  <!-- coupon title -->
+  <span><b>{{coupon.title}}</b></span> 
+  <button class="btn floatleft storeCouponBtn" ng-click="moreInfo()" title="More Information" ng-disabled="isAmountZero">
+		<span class="glyphicon glyphicon-chevron-down storeCouponBtnIcon"></span>
+	</button><br/> <br/>
+	<!-- coupon price -->
+   <span>{{coupon.price | currency}}</span>
+   
+   <button class="btn floatleft storeCouponBtn" ng-click="addToCart(coupon)" title="Add To Cart" ng-disabled="isAmountZero">
+		<span class="glyphicon glyphicon-shopping-cart storeCouponBtnIcon"></span>
+	</button> 
+  </div>
+</div>

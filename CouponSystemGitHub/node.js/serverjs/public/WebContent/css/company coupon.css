@@ -1,0 +1,51 @@
+.couponTextarea{
+	width:70%;
+	height:60px;
+	float:left;
+}
+
+.couponInput{
+	float:left;
+	clear:left;
+	margin-top:15px;
+}
+
+.searchTextCoup{
+	width:80%;
+	height:35px;
+	float:right;
+	margin-left:4px;
+	margin-top:0;
+	margin-right:8px;
+	border-radius:5px;
+	border-style:solid;
+	border-width:2px;
+	border-color:#4BCC50;
+	
+}
+
+.coupSelector{
+	width:20%;
+}
+
+#couponRightActions{
+	width:70%
+}
+
+#typeSelect{
+	width:100%;
+}
+
+#createCouponBtn{
+	margin-top:35px;
+	margin-left:130px;
+}
+
+.moreInfo{
+	text-align:left;
+}
+
+.couponInfoImage{
+	width:275px;
+	height:275px;
+}

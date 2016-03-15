@@ -1,0 +1,67 @@
+<!-- main page section -->
+<div id="mainPageSection" class="panel panel-default panel-body page">
+<!-- navigation menu -->
+		<div id="menu" class="container">
+		<ul class="nav nav-tabs">
+			<li ng-click="moveToStore()"><a>Store</a></li>
+			<li ng-click="moveToMyCoupons()"><a>My Coupons</a></li>
+			<li class="active"><a  >Shopping Cart<span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+		</ul>
+	</div>
+<!-- /navigation menu -->
+
+	<h2 class="text-left">Shopping Cart</h2>
+
+	<div class="container">
+<!-- main actions -->
+		<div id="mainActions">
+		    <!-- more actions -->
+			<div id="actions" class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown">
+					Actions <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a ng-click="removeAllCheckedCoupons()">Remove</a></li>
+				</ul>
+			</div>
+			<!-- /more actions -->
+		</div>
+<!-- /main actions -->
+
+<!-- main shopping cart table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="tableHeader"></th>
+					<th class="tableHeader">Title</th>
+					<th class="tableHeader">Type</th>
+					<th class="tableHeader">Price</th>
+					<th class="tableHeader">Start Date</th>
+					<th class="tableHeader">End Date</th>
+					<th class="tableHeader">Remove</th>
+					<th class="tableHeader">Purchased</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="coupon in coupons"  coupon="coupon" boxes="boxes" proper-type="general.properType"
+				remove-single-coupon="removeSingleCoupon" update-cart="general.updateCart" cart-coupon-tr>
+				</tr>
+			</tbody>
+		</table>
+<!-- /main shopping cart table -->
+
+		<div id="shoppingAlert" class="alert alert-success floatleft" role="alert"><span class="glyphicon glyphicon-plus-sign"></span>
+		<b>Items Purchased!</b></div>
+		<input type="button" class="button" ng-click="purchaseCart()" ng-hide="isDonePurchasing" ng-disabled="general.shoppingCart.length==0" value="Purchase"/>
+        <div class="alert alert-success floatleft" role="alert" ng-hide="!isDonePurchasing"><b>Thank You For Buying!</b></div>
+		<!-- loader -->
+		<div class="progress" id="loader">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="100" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%"></div>
+		</div>
+		<!-- /loader -->
+	</div>
+</div>
+<!-- /main page section -->

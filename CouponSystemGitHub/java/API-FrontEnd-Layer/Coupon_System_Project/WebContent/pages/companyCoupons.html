@@ -1,0 +1,177 @@
+<!-- main page section -->
+<div id="mainPageSection" class="panel panel-default panel-body page">
+	<h2 class="text-left">Coupons</h2>
+
+	<div class="container">
+<!-- main actions -->
+		<div id="mainActions">
+		    <!-- more actions drop down menu -->
+			<div id="actions" class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+					Actions <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a ng-click="deleteAllCheckedCompanyCoupons()">Delete</a></li>
+					<li><a ng-click="showCreate()">New Coupon</a></li>
+				</ul>
+			</div>
+			<!-- /more actions drop down menu -->
+			<div style="width: 44%; height: 5px; float: left;"></div>
+			
+			<!-- search related actions -->
+			<div id ="couponRightActions" class="rightActions">
+				  <button id="searchBtn" type="button" class="btn btn-default floatright" ng-click="search.funct()">
+					<span class="glyphicon glyphicon-search"></span> Search
+				</button>
+					 <select class="searchTextCoup coupSelector floatright" ng-model="search.selector" ng-change="isDateOrType()">
+					<option >Id</option>
+					<option >Title</option>
+					<option >End Date</option>
+					<option >Price</option>
+					<option >Type</option>
+				</select>
+				<div class="floatright">
+				<input type="text" class="searchTextCoup floatright"
+					placeholder="search" ng-model="search.value" ng-hide="search.searchbar.showHide"></input> 
+				<input type="text" id="searchByDate" class="searchTextCoup date floatright" ng-model="search.date.value" ng-hide="search.date.showHide"></input> 
+				<select id="typeSelect" class="searchTextCoup floatright" ng-model="search.type.selector" ng-hide="search.type.showHide">
+					<option selected>Resturants</option>
+					<option>Electricity</option>
+					<option>Food</option>
+					<option>Health</option>
+					<option>Sports</option>
+					<option>Camping</option>
+					<option>Travelling</option>
+				</select>
+			</div>
+			</div>
+			<!-- /search related actions -->
+		</div>
+<!-- /main actions -->
+
+<!-- main coupons table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="tableHeader"></th>
+					<th>Id</th>
+					<th>Title</th>
+					<th>Type</th>
+					<th>Amount</th>
+					<th>Edit</th>
+					<th>Delete</th>
+					<th>More</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in coupons"  x="x" hides="hides" more-info-coupon="moreInfoCoupon" edit-coupon="editCoupon" 
+				boxes="boxes" get-all-coupons="getAllCoupons" search="search" proper-type="general.properType" coupon-tr>
+				</tr>
+			</tbody>
+		</table>
+<!-- /main coupons table -->
+        <!-- loader -->
+		<div class="progress" id="loader">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="100" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%"></div>
+		</div>
+		<!-- /loader -->
+	</div>
+</div>
+<!-- /main page section -->
+
+<!-- new coupon panel -->
+<!-- an Angular Form that validates every field when creating a new coupon -->
+<div id="newCoupon" class="panel panel-default panel-body page page2"
+	ng-model="newCouponBar" ng-hide="hides.showHideNewCoupon" ng-form="newCouponForm">
+	<h2 class="text-left">New Coupon</h2>
+	<div id="fieldsContainer" class="fieldsContainer">
+		<input type="text" id="newTitle" class="appInput couponInput"
+			ng-model="newCoupon.title" placeholder="New Title" name="title" minlength="5" maxlength="24" required></input>
+            <div class="alertSpan floatleft" style="margin-top:20px;margin-left:5px;" ng-show="newCouponForm.title.$error.minlength && !fieldsHide">Title Too Short</div>  
+			 <input type="number" id="newprice" class="appInput couponInput" ng-model="newCoupon.price"
+			placeholder="New Price" name="price" required></input> 
+			<input type="number" id="newAmount"
+			class="appInput couponInput" ng-model="newCoupon.amount" placeholder="New Amount" name="amount" required></input>
+		<select id="newType" class="appInput couponInput" ng-model="newCoupon.type" required>
+			<option selected>Resturants</option>
+			<option>Electricity</option>
+			<option>Food</option>
+			<option>Health</option>
+			<option>Sports</option>
+			<option>Camping</option>
+			<option>Travelling</option>
+		</select> 
+		<input type="text" id="newStartDate" class="appInput date couponInput"
+			ng-model="newCoupon.startDate" placeholder="New Start Date" name="startDate" required></input>
+		<input type="text" id="newEndDate" class="appInput date couponInput"
+			ng-model="newCoupon.endDate" placeholder="New End Date" name="endDate" required></input>
+	</div>
+	<div id="imageContainer" class="imageContainer">
+		<img class="couponInfoImage" src="{{newCoupon.image}}" />
+		   <input type="file" ngf-select="onFileSelect($file)" name="file"/>
+		</div>
+	
+	<textarea id="newStartDate" class="appInput couponTextarea"
+		ng-model="newCoupon.message" placeholder="message"></textarea>
+	<input class="button" id="createCouponBtn"
+		ng-click="createCoupon()" ng-disabled="newCouponForm.$invalid" value="Create"/>
+</div>
+<!-- /new coupon panel -->
+
+<!-- edit coupon panel -->
+<!-- an Angular Form that validates every field when editing a coupon -->
+<div id="editCoupon" class="panel panel-default panel-body page page2" ng-model="editCouponBar" ng-hide="hides.showHideEdit" ng-form="editCouponForm">
+	<h2 class="text-left">Edit Coupon</h2>
+	<div id="fieldsContainer" class="fieldsContainer">
+		<input type="text" id="editTitle" class="appInput couponInput"
+			ng-model="editCoupon.title" name="title" minlength="5" maxlength="24" required></input>
+			 <div class="alertSpan floatleft" style="margin-top:20px;margin-left:5px;" ng-show="editCouponForm.title.$error.minlength && !fieldsHide">Title Too Short</div>  
+			 <input type="number" id="editPrice" class="appInput couponInput" ng-model="editCoupon.price" name="price" required></input> 
+			<input type="number" id="editAmount"
+			class="appInput couponInput" ng-model="editCoupon.amount" name="amount" required></input>
+		<select id="editType" class="appInput couponInput" ng-model="editCoupon.type" required>
+			<option>Resturants</option>
+			<option>Electricity</option>
+			<option>Food</option>
+			<option>Health</option>
+			<option>Sports</option>
+			<option>Camping</option>
+			<option>Travelling</option>
+		</select> 
+		<input type="text" id="editStartDate" class="appInput date couponInput"
+			ng-model="editCoupon.startDate" name="startDate" required></input>
+		<input type="text" id="editEndDate" class="appInput date couponInput"
+			ng-model="editCoupon.endDate" name="endDate" required></input>
+	</div>
+	<div id="editImageContainer" class="imageContainer">
+		<img class="couponInfoImage" src="{{editCoupon.image}}" />
+		   <input type="file" ngf-select="onFileSelect($file)" name="file"/>
+		</div>
+	<textarea id="editMessage" class="appInput couponTextarea"
+		ng-model="editCoupon.message"></textarea>
+	<input  class="button" id="createCouponBtn"
+		ng-click="doneEditingCoupon()" ng-disabled="editCouponForm.$invalid" value="Done"/>
+</div>
+<!-- /edit coupon panel -->
+
+<!-- more info panel -->
+<div id="moreInfoPanel" class="panel panel-default panel-body page page2" ng-model="moreInfoBar" ng-hide="hides.showHideMoreInfo">
+	<div id="editImageContainer" class="imageContainer floatright">
+		<img class="couponInfoImage" src="{{moreInfoCoupon.image}}" />
+	</div>
+	<h2 class="text-left">{{moreInfoCoupon.title}}</h2>
+	<div id="fieldsContainer" class="fieldsContainer moreInfo">
+	<br/>
+			<b> Price:</b>&nbsp;{{moreInfoCoupon.price | currency}} <br/><br/>
+			 <b>Amount:</b>&nbsp;{{moreInfoCoupon.amount}}<br/><br/>
+		     <b>Type:</b>&nbsp;{{moreInfoCoupon.type}} <br/><br/>
+		     <b>Start Date:</b>&nbsp;{{moreInfoCoupon.startDate}} <br/><br/>
+		     <b>End Date:</b>&nbsp;{{moreInfoCoupon.endDate}} <br/><br/>
+	</div>
+	        <div class="moreInfo"> <b>Message:</b>&nbsp;{{moreInfoCoupon.message}}</div> <br/><br/>
+	<div  class="button floatright" id="closeMoreInfo"
+		ng-click="closeMoreInfo()">close</div>
+</div>
+<!-- /more info panel -->

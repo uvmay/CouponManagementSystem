@@ -1,0 +1,25 @@
+ <!-- login loader --> 
+ <div id="loginLoading"></div>
+ <!-- /login loader -->
+ 
+ <div id="leftspace"></div>
+ <div id="login">Login</div><br/><br/>
+ 
+ <!-- login -->
+ <div id="boxes">
+ <div id="username"><div class="outterbox"><input type="text" class="appInput" id="tfield1" ng-model="username" placeholder="User Name"/>  </div></div>
+ <div id="password"><div class="outterbox"><input type="password" class="appInput" id="tfield2" ng-model="password" placeholder="Password"/>  </div></div>
+ <div id="ctype"><div class="outterbox" >
+   <select id="selectType" class="appSelect" ng-model="selectType">
+    <option selected>Customer</option>
+	<option>Company</option>
+	<option>Admin</option>
+   </select>
+ </div></div>
+ <div id="buttons">
+ <div class ="button" id="loglink" ng-click="login()">Login</div>
+ <div id="signbutton" class ="button" ng-click="toSignUp()">Sign Up</div>
+ </div>
+ </div>
+ <!-- /login -->
+  

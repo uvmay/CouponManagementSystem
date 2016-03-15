@@ -1,0 +1,35 @@
+#header{
+	height:120px;
+	width:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+	background-color:#4BCC50;
+	border-bottom-style:solid;
+	border-bottom-color:white;
+	z-index:1000;
+}
+
+#logo{
+	float:left;
+	margin-left:10px;
+	margin-top:10px;
+	margin-right:40px;
+	z-index:1000;
+}
+
+#slogan{
+	float:left;
+	margin-top:88px;
+	font-family:arial;
+	font-size:20px;
+	color:#585C58;
+	font-weight:bold;
+	
+}
+
+@media (max-width: 600px){
+	#slogan{
+	    display:none;
+	}
+}

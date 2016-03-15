@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1256">
+ <link type="text/css" href="css/header.css" rel="Stylesheet" />
+<title>Unauthorized</title>
+</head>
+<body>
+
+<!-- header -->
+	<div id="header">
+		<div id="logo">
+			<img src="images/coupons_logo160x100.png" alt="coups logo" style="height: 100px; width: 160px;" />
+		</div>
+		<div id="slogan">Pay Less, Buy More!</div>
+	</div>
+<!-- /header -->
+
+<!-- main error page -->
+	<div style="margin-top: 150px;">
+		<h2 id="title"></h2>
+		<div style="background-color: black; height: 2px; width: 100%;"></div>
+		<br /> <a href="http://localhost:8080/Coupon_System_Project/" style="text-align: left;">Login</a>
+	</div>
+<!-- /main error page -->
+
+    <!-- importing urlParser script-->
+	<script type="text/javascript" src="javascript/urlParser.js"></script>
+	<script>
+		//extracting the error from the paramater passed in the url
+	    var error = urlErrorParser(window.location.href);
+		
+		//sets the title to be the error message extracted from the url
+		document.getElementById("title").innerHTML = error;
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!-- main page section -->
+<div id="mainPageSection" class="panel panel-default panel-body page">
+<!-- navigation menu -->
+	<div id="menu" class="container">
+		<ul class="nav nav-tabs">
+			<li><a ng-click="moveToCompanies()">Companies</a></li>
+			<li class="active"><a>Customers</a></li>
+		</ul>
+	</div>
+<!-- /navigation menu -->
+
+	<h2 class="text-left">Customers</h2>
+
+	<div class="container">
+<!-- main actions -->
+		<div id="mainActions">
+			<!-- more actions drop down menu -->
+			<div id="actions" class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+					Actions <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a ng-click="deleteAllCheckedAdminCustomers()">Delete</a></li>
+					<li><a ng-click="showCreate()">New Customer</a></li>
+				</ul>
+			</div>
+			<!-- /more actions drop down menu -->
+			
+			<div style="width: 44%; height: 5px; float: left;"></div>
+			<!-- search related actions -->
+			<div class="rightActions">
+				<button id="searchBtnAdmin" type="button" class="btn btn-default floatright" ng-click="search.funct()">
+					<span class="glyphicon glyphicon-search"></span> Search
+				</button>
+				<select id="searchSelect" class="appSelect floatright" ng-model="search.selector">
+					<option selected>Id</option>
+					<option>Name</option>
+				</select> <input type="text" id="searchText" class="appInput floatright" placeholder="search" ng-model="search.value"></input>
+			</div>
+			<!-- /search related actions -->
+		</div>
+<!-- /main actions -->
+
+<!-- main customers table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="tableHeader"></th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Password</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in customers" data="x" checked-boxes="checkedBoxes"
+					get-all-customers="getAllCustomers" customer-tr>
+				</tr>
+			</tbody>
+		</table>
+<!-- /main companies table -->
+        <!-- loader -->
+		<div class="progress" id="loader">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="100" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%"></div>
+		</div>
+		<!-- /loader -->
+	</div>
+</div>
+<!-- /main page section -->
+
+<!-- new customer panel -->
+<!-- an Angular Form that validates every field when creating the new customer -->
+<div id="newCustomer" class="panel panel-default panel-body page page2"
+	ng-model="newCustomerBar" ng-hide="showHide" ng-form="newCustomerForm">
+	<h2 class="text-left">New Customer</h2>
+	<!-- new name -->
+	<div class="floatleft">
+		<input type="text" id="newName" class="appInput newCompInput"
+			ng-model="newCustomer.username" minlength="5" maxlength="24"
+			name="username" placeholder="New Name" required></input>
+		<div class="instText" ng-show="!newCustomerForm.username.$error.minlength">*must include between 5-24 characters</div>
+		<div class="alertSpan" ng-show="newCustomerForm.username.$error.minlength">User Name Too Short</div>
+	</div>
+	<!-- /new name -->
+	
+	<!-- new password -->
+	<div class="floatleft">
+		<input type="text" id="newPassword" class="appInput newCompInput"
+			ng-model="newCustomer.password" name="password"
+			placeholder="New Password" required></input>
+		<div class="instText" ng-show="!newCustomerForm.password.$error.minlength">*must include 8-12 characters</div>
+		<div class="alertSpan" ng-show="newCustomerForm.password.$error.minlength">Password Too Short</div>
+	</div>
+	<!-- /new password -->
+	<input type="button" class="button newCompBtn floatleft"
+		ng-click="createCustomer()" ng-disabled="newCustomerForm.$invalid"
+		value="Create" id="" />
+</div>
+<!-- /new customer panel -->

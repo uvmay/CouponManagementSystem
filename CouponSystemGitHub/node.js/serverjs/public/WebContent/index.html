@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- declaring the whole page as the Angular Application named "couponApp" -->
+<html ng-app="couponApp">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Coups</title>
+ 
+ <!-- all of the css resources -->
+ <link type="text/css" href="WebContent/css/header.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/signup page.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/menu.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/login page.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/admin companies.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/company coupon.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/customer store.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/validation.css" rel="Stylesheet"/>
+ <link type="text/css" href="WebContent/css/general.css" rel="Stylesheet"/>
+ <link type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="Stylesheet"/>
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+ 
+ <!-- all of the JS outter resources -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <script src="WebContent/javascript/plugins/ng-file-upload.min.js"></script>
+ <script src="WebContent/javascript/plugins/ng-file-upload-shim.min.js"></script>
+</head>
+
+<!-- the body tag, declaring the general Angular Controller for the entire application -->
+<body ng-controller="generalController">
+
+<!-- header -->
+ <!-- the header with the logo that is found on every page of the website -->
+ <div id="header">
+   <div id="logo"><img src="WebContent/images/coupons_logo160x100.png" alt="coups logo" style="height:100px;width:160px;"/></div>
+   <div id="slogan">Pay Less, Buy More!</div>
+   <!-- the logout button that's hidden on the login page and the signup page and
+    isn't hidden on every other page-->
+   <div id="logoutBtn" ng-click="logoutFunc()" ng-hide="logout.isLoginPage">Logout</div>
+ </div>
+<!-- /header -->
+
+ <!-- the main page which switches using ngRoute between the website pages -->
+ <div id="mainpage" ng-view>
+ </div>
+
+ <!-- scripts for all of the website's pages and functions-->
+ <script type="text/javascript" src="WebContent/javascript/urlParser.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/generalController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/pageSwitch.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/loginController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/signupController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/adminCompanyController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/companyTableRaw.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/companyTableRawController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/adminCustomerController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/customerTableRaw.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/customerTableRawController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/companyCouponController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/couponCompanyTableRaw.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/couponCompanyTableRawController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/customerStoreController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/customerStoreCoupon.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/customerStoreCouponController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/customerCouponController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/customerPurchasedCoupon.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/controllers/customerCartController.js"></script>
+ <script type="text/javascript" src="WebContent/javascript/directives/customerCartTableRaw.js"></script>
+ 
+</body>
+</html>

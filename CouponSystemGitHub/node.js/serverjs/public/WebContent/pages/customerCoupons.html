@@ -1,0 +1,79 @@
+<!-- low opacity window -->
+<div id="opacityWindow" ng-model="opacityWindow.window"  ng-click="closeMoreInfo()"></div>
+<!-- /low opacity window -->
+
+<!-- main page section -->
+<div id="mainPageSection" class="panel panel-default panel-body page">
+
+<!-- navigation menu -->
+	<div id="menu" class="container">
+		<ul class="nav nav-tabs">
+			<li ng-click="moveToStore()"><a>Store</a></li>
+			<li class="active"><a >My Coupons</a></li>
+			<li><a ng-click="moveToShoppingCart()">Shopping Cart<span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+		</ul>
+	</div>
+<!-- /navigation menu -->
+	<h2 class="text-left">My Coupons</h2>
+	
+<!-- main actions -->
+	<div id="mainActions" style="padding:10px;">
+		<div style="width: 44%; height: 5px; float: left;"></div>
+		<div id="couponRightActions" class="rightActions">
+			<button id="searchBtn" type="button" class="btn btn-default floatright" ng-click="search.funct()">
+			    <span class="glyphicon glyphicon-search"></span> Search
+			</button>
+			<select class="searchTextCoup coupSelector floatright" ng-model="search.selector" ng-change="isType()">
+				<option>Title</option>
+				<option>Price</option>
+				<option>Type</option>
+			</select>
+			<div class="floatright">
+				<input type="text" class="searchTextCoup floatright"
+					placeholder="search" ng-model="search.value" ng-hide="search.searchbar.showHide"></input>
+				<select id="typeSelect" class="searchTextCoup floatright"
+					ng-model="search.type.selector" ng-hide="search.type.showHide">
+					<option selected>Resturants</option>
+					<option>Electricity</option>
+					<option>Food</option>
+					<option>Health</option>
+					<option>Sports</option>
+					<option>Camping</option>
+					<option>Travelling</option>
+				</select>
+			</div>
+		</div>
+	</div>
+<!-- /main actions -->
+	
+	<div id="couponsStoreContainer">
+	<!-- loader -->
+	<div class="progress" id="loader">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="100" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%" ng-hide="loaderHide"></div>
+	</div>
+	<!-- /loader -->
+		<div class="floatleft panel panel-default panel-body couponSquare" ng-repeat="coupon in coupons" coupon="coupon" more-info-coupon="moreInfoCoupon" opacity-window="opacityWindow" 
+		 add-to-cart="addToCart" proper-type="general.properType" purchased-coupondiv></div>
+	</div>
+<!-- moreInfo window -->
+	<div id="moreInfoWindowStore" class="panel panel-default panel-body">
+		<div id="editImageContainer" class="imageContainer floatright">
+			<img class="couponInfoImageStore" src="{{moreInfoCoupon.image}}" />
+		</div>
+		<h2 class="text-left">{{moreInfoCoupon.title}}</h2>
+		<div id="fieldsContainer" class="fieldsContainer moreInfo">
+			<br /> <b> Price:</b>&nbsp;{{moreInfoCoupon.price | currency}} <br />
+			<br /> <b>Type:</b>&nbsp;{{moreInfoCoupon.type}} <br />
+			<br /> <b>Start Date:</b>&nbsp;{{moreInfoCoupon.startDate}} <br />
+			<br /> <b>End Date:</b>&nbsp;{{moreInfoCoupon.endDate}} <br />
+			<br />
+		</div>
+		<div class="moreInfo">
+	        <b>Message:</b>&nbsp;{{moreInfoCoupon.message}}
+		</div>                        
+	</div>
+<!-- /moreInfo window -->
+</div>
+<!-- /main page section -->

@@ -1,0 +1,16 @@
+{
+  "name": "coupon-system",
+  "version": "1.0.0",
+  "description": "a system to manage customers coupon purchases on the coupon.com website",
+  "main": "checkmongo.js",
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.5.4",
+    "mongodb": "^1.4.20",
+    "multer": "^1.1.0",
+    "q": "^1.4.1"
+  }
+}

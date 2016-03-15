@@ -1,0 +1,27 @@
+    <!-- a single raw in the admin's companies table -->
+    <!-- every raw is also an Angular Form in order to validate the editing -->
+    
+    <ng-form name="form">
+    <td><input type="checkbox" name="companyRow" ng-click="checkboxChange($event,line.id)"/></td>
+    <td >{{ line.id }}</td>
+    <td ng-form="compname">{{line.compName}}
+     <input type="text" class="editTextBox" ng-model="fields.name" ng-hide="fieldsHide" name="compname" minlength="3" maxlength="24" required></input>
+    <div class="instText" ng-show="!compname.compname.$error.minlength && !fieldsHide">*must include between 3-24 characters</div>
+    <div class="alertSpan" ng-show="compname.compname.$error.minlength && !fieldsHide">User Name Too Short</div>  
+    </td>
+    <td ng-form="password">{{line.password}}
+     <div ng-hide="fieldsHide">
+     <input  type="text" class="editTextBox" ng-model="fields.password" name="password" minlength="8" maxlength="12" required></input>
+    <div class="instText" ng-show="!password.password.$error.minlength">*must include 8-12 characters</div>
+	<div class="alertSpan" ng-show="password.password.$error.minlength">Password Too Short</div>
+    </div>
+    </td>
+    <td ng-form="email">{{line.email}}
+      <input type="email" class="editTextBox" ng-model="fields.email" ng-hide="fieldsHide" name="email" ng-pattern="emailRegExp" required></input>
+    </td>
+    <td><button class="btn" ng-model="editBtn" ng-click="editCompany($event)" ng-disabled="form.$invalid"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit
+   </button></td>
+    <td><button class="btn" ng-click="deleteCompany(line.id)">
+   <span class="glyphicon glyphicon-remove-sign"></span>&nbsp;Delete
+   </button></td>
+   </ng-form>
